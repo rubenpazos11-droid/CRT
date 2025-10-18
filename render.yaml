@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: crtq-api
+    env: docker
+    rootDir: api
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: INGEST_SHARED_KEY
+        sync: false
+      - key: CRTQ_CORS
+        value: https://crtq-frontend.onrender.com
+      - key: TELEGRAM_BOT_TOKEN
+        value: 8141664120:AAG3ATLPXpMOUFMlK-fDuNM3FCYNND_il-c
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+  - type: web
+    name: crtq-frontend
+    env: docker
+    rootDir: frontend
+    envVars:
+      - key: NEXT_PUBLIC_CRTQ_API
+        value: https://crtq-api.onrender.com
